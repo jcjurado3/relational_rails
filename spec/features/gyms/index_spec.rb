@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "gyms index page" do
+RSpec.describe "gyms index page", type: :feature do
   it "can see the name of each gyms record in the system" do
     gym_1 = Gym.create!(name:                     "HSD Fit",
                         location:              "Boca Raton, FL",
@@ -20,18 +20,5 @@ RSpec.describe "gyms index page" do
     expect(page).to have_content(gym_1.name)
     expect(page).to have_content(gym_2.name)
     expect(page).to have_content(gym_3.name)
-  end
-
-  it "has Gym show page with gym attributes" do
-    gym_1 = Gym.create!(name:                     "HSD Fit",
-                        location:              "Boca Raton, FL",
-                        franchise_owner: "Carmine Scandura"
-    )
-
-    visit "/gyms/#{gym_1.id}"
-
-    expect(page).to have_content(gym_1.name)
-    expect(page).to have_content(gym_1.location)
-    expect(page).to have_content(gym_1.franchise_owner)
   end
 end
