@@ -1,3 +1,3 @@
-class Song < ApplicationRecord
-  
+class Gym < ApplicationRecord
+
 end
