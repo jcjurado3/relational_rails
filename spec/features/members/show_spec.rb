@@ -21,7 +21,7 @@ RSpec.describe "member show page", type: :feature do
               program_type:    "3 days",
               active_member:      true)
 
-    visit "/members/#{gym.id}"
+    visit "/members/#{member_1.id}"
 
     expect(page).to have_content(member_1.name)
     expect(page).to have_content(member_1.age)
