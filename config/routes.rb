@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/gyms/:id", to: "gyms#show"
   get "/members", to: "members#index"
   get "/members/:id", to: "members#show"
+  get "/gyms/:id/members", to: "gym_members#index"
 end

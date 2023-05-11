@@ -1,0 +1,11 @@
+<h1> <%= @gym.name %> </h1>
+
+<% @gym.members.each do |member| %>
+<h2> Member Name: <%= member.name %> </h2>
+
+<p> Member Age: <%= member.age %> </p>
+<p> Member Monthly Dues: <%= member.monthly_dues %> </p>
+<p> Member Program Type: <%= member.program_type %> </p>
+<p> Member Active: <%= member.active_member %> </p>
+
+<% end %>

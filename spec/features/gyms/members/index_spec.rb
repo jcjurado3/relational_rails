@@ -6,20 +6,16 @@ RSpec.describe "Gym Member Index Page" do
     location:              "Boca Raton, FL",
     franchise_owner: "Carmine Scandura")
 
-    gym_2 = Gym.create!(name:   "High Speed Dirt Fitness",
-        location:        "Greenville, SC",
-        franchise_owner: "Richard Jurado")
-
     member_1 = gym.members.create!(name:        "John House",
-              age:                   52,
-              monthly_dues:         199,
-              program_type: "Unlimited",
-              active_member:      true)
+                                  age:                   52,
+                                  monthly_dues:         199,
+                                  program_type: "Unlimited",
+                                  active_member:      true)
     member_2 = gym.members.create!(name:   "Michelle Wright",
-              age:                   45,
-              monthly_dues:         139,
-              program_type:    "3 days",
-              active_member:      true)
+                                  age:                   45,
+                                  monthly_dues:         139,
+                                  program_type:    "3 days",
+                                  active_member:      true)
 
     visit "/gyms/#{gym.id}/members"  
 
@@ -29,6 +25,6 @@ RSpec.describe "Gym Member Index Page" do
     expect(page).to have_content(member_1.program_type)
     expect(page).to have_content(member_1.active_member)
 
-    expect(page).to_not have_content(member_2.name)
+    expect(page).to have_content(member_2.name)
   end
 end
