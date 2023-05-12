@@ -4,7 +4,8 @@ RSpec.describe Gym, type: :model do
   describe "validation" do
     it {should have_many :members}
   end
-  describe "sort Gym Index by Creation Date" do
+  describe "Gym Index sorted by Most Recently Opened" do
+    it "#sort_gym_by_open_date" do 
     gym = Gym.create!(name:                     "HSD Fit",
                       location:          "Boca Raton, FL",
                       franchise_owner: "Carmine Scandura")
@@ -33,6 +34,6 @@ RSpec.describe Gym, type: :model do
                                   active_member:      true)
 
     expect(Gym.sort_gym_by_open_date).to eq(Gym.order(:created_at))
-
+    end
   end
 end
