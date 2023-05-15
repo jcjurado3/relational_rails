@@ -13,12 +13,23 @@ class GymsController < ApplicationController
   end
 
   def create
-    gym = Gym.new({
-      name: params[:gym][:name],
-      location: params[:gym][:location],
-      franchise_owner: params[:gym][:franchise_owner]
-    })
-    gym.save
+    Gym.create!(gym_params)
     redirect_to "/gyms"
+  end
+
+  def edit
+    @gym = Gym.find(params[:id])
+  end
+
+  def update
+    @gym = Gym.find(params[:id])
+    @gym.update(gym_params)
+
+    redirect_to "/gyms/#{@gym.id}"
+  end
+
+  private 
+  def gym_params
+    params.permit(:name, :location, :franchise_owner)
   end
 end

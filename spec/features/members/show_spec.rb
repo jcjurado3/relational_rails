@@ -48,7 +48,7 @@ RSpec.describe "member show page", type: :feature do
     
     visit "/members/#{@member_1.id}"
 
-    expect(page.has_link?).to be(true)
+    expect(page).to have_link("All Members")
 
     click_link("All Members")
 

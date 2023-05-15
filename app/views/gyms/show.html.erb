@@ -1,4 +1,4 @@
-<a href="/members"><p>All Members<p></a> <a href="/gyms"><p>All Gyms<p></a>
+<a href="/gyms"><p>All Gyms<p></a>
 
 <h1>#{@gym.name} show page</h1>
 
@@ -8,3 +8,5 @@
 <p> Number of Members: <%= @member_count %>
 
 <a href="/gyms/<%= @gym.id %>/members"><p>Active Members at the Gym</p></a>
+
+<%= link_to "Edit Gym", "/gyms/#{@gym.id}/edit" %>

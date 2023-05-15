@@ -1,0 +1,11 @@
+<%= form_with url: "/gyms/#{@gym.id}", method: :patch, local: true do |form| %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :location %>
+  <%= form.text_field :location %>
+  <%= form.label :franchise_owner, "Franchise Owner" %>
+  <%= form.text_field :franchise_owner %>
+  <%= form.submit "Update Gym" %>
+
+<% end %>
