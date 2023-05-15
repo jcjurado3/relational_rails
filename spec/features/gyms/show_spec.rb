@@ -64,4 +64,16 @@ RSpec.describe "the gyms show page", type: :feature do
     expect(page).to have_content("#{@gym_2.name}")
 
   end
+
+  it "Has link to the Gym Members Page" do
+    visit "/gyms/#{@gym.id}"
+
+    expect(page.has_link?).to be(true)
+
+    click_link("Active Members at the Gym")
+
+    expect(page).to have_content("Member Name: #{@member_1.name}")
+    expect(page).to have_content("Member Name: #{@member_2.name}")
+    expect(page).to_not have_content("Member Name: #{@member_3.name}")
+  end
 end
