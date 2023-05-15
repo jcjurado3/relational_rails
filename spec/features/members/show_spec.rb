@@ -57,4 +57,15 @@ RSpec.describe "member show page", type: :feature do
     expect(page).to have_content("Member Name: #{@member_3.name}")
 
   end
+
+  it "Has link at the top of the page for Gym Index" do
+    visit "/members/#{@member_1.id}"
+
+    expect(page.has_link?).to be(true)
+
+    click_link("All Gyms")
+
+    expect(page).to have_content("#{@gym.name}")
+    expect(page).to have_content("#{@gym_2.name}")
+  end
 end
