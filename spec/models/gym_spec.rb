@@ -36,7 +36,7 @@ RSpec.describe Gym, type: :model do
 
   describe "Gym Index sorted by Most Recently Opened" do
     it "#sort_gym_by_open_date" do 
-    expect(Gym.sort_gym_by_open_date).to eq(Gym.order(:created_at))
+    expect(Gym.sort_gym_by_open_date).to eq(Gym.order(created_at: :desc))
     end
   end
 
