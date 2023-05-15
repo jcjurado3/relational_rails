@@ -6,7 +6,7 @@ RSpec.describe "gyms index page", type: :feature do
     @gym = Gym.create!(name:                     "HSD Fit",
                       location:          "Boca Raton, FL",
                       franchise_owner: "Carmine Scandura")
-    @gym_2 = Gym.create!(name:                     "HSD Fit",
+    @gym_2 = Gym.create!(name:  "High Speed Dirt Evolution",
                         location:          "Boca Raton, FL",
                         franchise_owner: "Carmine Scandura")
     @member_1 = @gym.members.create!(name:        "John House",
@@ -49,7 +49,17 @@ RSpec.describe "gyms index page", type: :feature do
     expect(page).to have_content("Member Name: #{@member_1.name}")
     expect(page).to have_content("Member Name: #{@member_2.name}")
     expect(page).to have_content("Member Name: #{@member_3.name}")
+  end
 
+  it "Has link at the top of the page for Gym Index" do
+    visit "/gyms"
+
+    expect(page.has_link?).to be(true)
+
+    click_link("All Gyms")
+
+    expect(page).to have_content("#{@gym.name}")
+    expect(page).to have_content("#{@gym_2.name}")
 
   end
 end
