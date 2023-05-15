@@ -1,7 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "the gyms show page", type: :feature do
-
+RSpec.describe "Gym Member Index Page" do
   before(:each) do
     @gym = Gym.create!(name:                     "HSD Fit",
                       location:          "Boca Raton, FL",
@@ -31,17 +30,20 @@ RSpec.describe "the gyms show page", type: :feature do
                                       active_member:      true)
   end
 
-  it "has Gym show page with gym attributes" do
+  it "can see each member that is associated with that gym with member attributes" do
+    visit "/gyms/#{@gym.id}/members"  
 
-    visit "/gyms/#{@gym.id}"
+    expect(page).to have_content(@member_1.name)
+    expect(page).to have_content(@member_1.age)
+    expect(page).to have_content(@member_1.monthly_dues)
+    expect(page).to have_content(@member_1.program_type)
+    expect(page).to have_content(@member_1.active_member)
 
-    expect(page).to have_content(@gym.name)
-    expect(page).to have_content(@gym.location)
-    expect(page).to have_content(@gym.franchise_owner)
+    expect(page).to have_content(@member_2.name)
   end
 
   it "Has link at the top of the page for Member Index" do
-    visit "/gyms/#{@gym.id}"
+    visit "/gyms/#{@gym.id}/members"  
 
     expect(page.has_link?).to be(true)
 
