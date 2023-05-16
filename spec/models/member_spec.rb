@@ -45,5 +45,11 @@ RSpec.describe Member, type: :model do
     it "#current_member" do
       expect(Member.current_member).to eq([@member_1, @member_2, @member_3, @member_4])
     end
+
+    it "Member Index can order in alphabetically order" do
+    expect(Member.all).to eq([@member_1, @member_2, @member_3, @member_4, @member_5])
+    expect(Member.all.member_sort).to eq([@member_3, @member_4, @member_1, @member_5, @member_2])
+
+    end
   end
 end

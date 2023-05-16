@@ -8,4 +8,6 @@ class Gym < ApplicationRecord
   def count_members
     self.members.count
   end
+
+  
 end

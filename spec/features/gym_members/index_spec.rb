@@ -28,6 +28,11 @@ RSpec.describe "Gym Member Index Page" do
                                       monthly_dues:         139,
                                       program_type:    "3 days",
                                       active_member:      true)
+    @member_5 = @gym.members.create!(name:     "Abigal Lewis",
+                                      age:                   35,
+                                      monthly_dues:         139,
+                                      program_type:    "3 days",
+                                      active_member:      true)
   end
 
   it "can see each member that is associated with that gym with member attributes" do
@@ -72,5 +77,20 @@ RSpec.describe "Gym Member Index Page" do
     click_link("Create Member")
 
     expect(current_path).to eq("/gyms/#{@gym_2.id}/members/new")
+  end
+
+  it "has link to sort member in alphabetical order" do
+    visit "/gyms/#{@gym.id}/members" 
+
+    expect(@member_1.name).to appear_before(@member_2.name)
+    expect(@member_2.name).to appear_before(@member_5.name)
+    expect(page).to have_link("Sort Alphabetically")
+
+    click_link("Sort Alphabetically")
+
+    expect(current_path).to eq("/gyms/#{@gym.id}/members")
+
+    expect(@member_5.name).to appear_before(@member_1.name)
+    expect(@member_5.name).to appear_before(@member_2.name)
   end
 end
