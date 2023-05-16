@@ -13,7 +13,7 @@ class GymsController < ApplicationController
   end
 
   def create
-    Gym.create!(gym_params)
+    gym = Gym.create!(gym_params)
     redirect_to "/gyms"
   end
 

@@ -67,10 +67,10 @@ RSpec.describe "Gym Member Index Page" do
   end
 
   it "has link to create member in Gym Member Index" do
-    visit "/gyms/#{@gym.id}/members" 
+    visit "/gyms/#{@gym_2.id}/members" 
 
     click_link("Create Member")
 
-    expect(current_path).to eq("/gyms/#{@gym.id}/members/new")
+    expect(current_path).to eq("/gyms/#{@gym_2.id}/members/new")
   end
 end

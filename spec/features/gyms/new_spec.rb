@@ -10,18 +10,17 @@ RSpec.describe "Creating new Gym" do
                         franchise_owner: "Richard Jurado")
   end
 
-  scenario "should create new Gym" do
+  it "should create new Gym" do
     visit "/gyms"
 
-    expect(page.has_link?).to be(true)
-    expect(page).to have_content("New Gym")
+    expect(page).to have_link("New Gym")
 
     click_link("New Gym")
 
-    fill_in "gym[name]", with: 'Evolution Fitness'
-    fill_in "gym[location]", with: 'Greenville, SC'
-    fill_in "gym[franchise_owner]", with: 'Jimmy Jurado'
-    click_on("submit")
+    fill_in "Name", with: 'Evolution Fitness'
+    fill_in "Location", with: 'Greenville, SC'
+    fill_in "Franchise owner", with: 'Jimmy Jurado'
+    click_on("Create Gym")
 
     expect(page).to have_current_path("/gyms")
 

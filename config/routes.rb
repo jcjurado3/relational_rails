@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   patch "/gyms/:id", to: "gyms#update"
 
   get "/gyms/:id/members", to: "gym_members#index"
+  get "/gyms/:id/members/new", to: "gym_members#new"
+  post "/gyms/:id/members", to: "gym_members#create"
 
   get "/members", to: "members#index"
   get "/members/:id", to: "members#show"

@@ -1,8 +1,10 @@
-<form action ="/gyms" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <h4>Enter a new Gym:</h4>
-  <h5>Gym Name: </h5><input type="text" name="gym[name]"><br/>
-  <h5>Location:</h5><input type="text" name="gym[location]"><br/>
-  <h5>Franchise Owner:</h5><input type="text" name="gym[franchise_owner]"><br/>
-  <input id="submit" type="submit"/>
-</form>
+<%= form_with url: "/gyms", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :location %>
+  <%= form.text_field :location %>
+  <%= form.label :franchise_owner %>
+  <%= form.text_field :franchise_owner %>
+
+  <%= form.submit "Create Gym" %>
+<% end %>
