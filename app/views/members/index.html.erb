@@ -2,7 +2,7 @@
 
 <h1>All Members</h1>
 
-<% @members.each do |member| %>
+<% @members.current_member.each do |member| %>
 <h2>Member Name: <%= member.name %> </h2>
 <p>Age: <%= member.age %> </p>
 <p>Monthly Dues: <%= member.monthly_dues %> </p>
