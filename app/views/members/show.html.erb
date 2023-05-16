@@ -5,3 +5,5 @@
 <p>Monthly Dues: <%= @member.monthly_dues %> </p>
 <p>Program Type: <%= @member.program_type %> </p>
 <p>Current Member: <%= @member.active_member %> </p>
+
+<%= link_to "Update Member", "/members/#{@member.id}/edit" %>

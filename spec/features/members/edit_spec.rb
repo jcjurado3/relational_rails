@@ -1,7 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "member show page", type: :feature do
-
+RSpec.describe "Member Edit Page" do
   before(:each) do
     @gym = Gym.create!(name:                     "HSD Fit",
                       location:          "Boca Raton, FL",
@@ -31,51 +30,18 @@ RSpec.describe "member show page", type: :feature do
                                       active_member:      true)
   end
 
-  it "will display the member with that ID with attributes" do
+  it "has form to edit existing member details" do
+    visit "/members/#{@member_1.id}/edit"
 
-    visit "/members/#{@member_1.id}"
+    expect(page).to have_button("Update Member")
 
-    expect(page).to have_content(@member_1.name)
-    expect(page).to have_content(@member_1.age)
-    expect(page).to have_content(@member_1.monthly_dues)
-    expect(page).to have_content(@member_1.program_type)
-    expect(page).to have_content(@member_1.active_member)
-
-    expect(page).to_not have_content(@member_2.name)
-  end
-
-  it "Has link at the top of the page for Member Index" do
+    fill_in("Age", with: 53)
+    fill_in("Monthly Dues", with: 139)
+    fill_in("Program Type", with: "3 Days")
     
-    visit "/members/#{@member_1.id}"
+    click_button("Update Member")
 
-    expect(page).to have_link("All Members")
-
-    click_link("All Members")
-
-    expect(page).to have_content("Member Name: #{@member_1.name}")
-    expect(page).to have_content("Member Name: #{@member_2.name}")
-    expect(page).to have_content("Member Name: #{@member_3.name}")
-
-  end
-
-  it "Has link at the top of the page for Gym Index" do
-    visit "/members/#{@member_1.id}"
-
-    expect(page.has_link?).to be(true)
-
-    click_link("All Gyms")
-
-    expect(page).to have_content("#{@gym.name}")
-    expect(page).to have_content("#{@gym_2.name}")
-  end
-
-  it "has a link to update Member details" do 
-    visit "/members/#{@member_1.id}"
-
-    expect(page).to have_link("Update Member")
-
-    click_link("Update Member")
-
-    expect(current_path).to eq("/members/#{@member_1.id}/edit")
+    expect(current_path).to eq("/members/#{@member_1.id}")
+    expect(page).to have_content("3 Days")
   end
 end
