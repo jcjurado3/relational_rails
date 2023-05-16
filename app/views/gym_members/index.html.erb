@@ -1,7 +1,7 @@
 <a href="/gyms"><p>All Gyms<p></a>
 <h1> <%= @gym.name %> </h1>
 
-<% @gym.members.each do |member| %>
+<% @members.each do |member| %>
 <h2> Member Name: <%= member.name %> </h2>
 
 <p> Member Age: <%= member.age %> </p>
@@ -11,6 +11,7 @@
 <% end %>
 
 <%= link_to "Create Member", "/gyms/#{@gym.id}/members/new" %>
+<%= link_to "Sort Alphabetically", "/gyms/#{@gym.id}/members?sort=true", method: :get %>
 
 
 

@@ -1,6 +1,12 @@
 class GymMembersController < ApplicationController
   def index
     @gym = Gym.find(params[:id])
+    @members = @gym.members
+    if params[:sort] == "true"
+      @members = @members.member_sort
+    else
+      @members
+    end
   end
 
   def new
@@ -13,6 +19,14 @@ class GymMembersController < ApplicationController
 
     redirect_to "/gyms/#{gym.id}/members"
   end
+
+  # def member_sort(sort)
+  #   if sort == "true"
+  #     return members.order(:name)
+  #   else
+  #     members
+  #   end
+  # end
 
   private
 

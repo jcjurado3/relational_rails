@@ -89,4 +89,5 @@ RSpec.describe "member index page", type: :feature do
     expect(page).to_not have_content("Member Name: #{@member_5.name}")
 
   end
+
 end
